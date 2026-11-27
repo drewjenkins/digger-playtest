@@ -111,7 +111,7 @@ body {
 
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.wasm":39509339,"index.pck?v=a91a272c5b2119c82d2f471b9ded1105d955b75133422582955915775509653f":3379464},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"mainPack":"index.pck?v=a91a272c5b2119c82d2f471b9ded1105d955b75133422582955915775509653f"};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.wasm":39509339,"index.pck?v=583b83d74e252f82c23b3512681299b6632892e8e1373a0dc3b5f283c211727f":3378024},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"mainPack":"index.pck?v=583b83d74e252f82c23b3512681299b6632892e8e1373a0dc3b5f283c211727f"};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
@@ -199,7 +199,7 @@ const engine = new Engine(GODOT_CONFIG);
 		}
 	} else {
 		setStatusMode('progress');
-		await engine.preloadFile(new TextEncoder().encode("extends Node\nconst Game := preload(\"res://pyramid_dig.gd\")\nfunc _ready():\n\tcall_deferred(\"open_board\")\nfunc open_board():\n\tvar g: Game = get_tree().current_scene\n\tawait get_tree().process_frame\n\tg.layer = 13\n\tfor side in range(1, 14):\n\t\tg.cleared_total += side * side\n\tg._build_layer()\n\tg._start_shift()\n\tg._close_shift()\n\tg._show_night()\n\tg.progression.record_rewards(1000, [], 13)\n\tg._open_menu(g.Menu.WORKSHOP)\n"),"/board-preview.gd");
+		await engine.preloadFile(new TextEncoder().encode("extends Node\nconst Game := preload(\"res://pyramid_dig.gd\")\nfunc _ready():\n\tcall_deferred(\"open_board\")\nfunc open_board():\n\tvar g: Game = get_tree().current_scene\n\tawait get_tree().process_frame\n\tg._start_shift()\n\tg._close_shift()\n\tg._show_night()\n\tg.progression.record_rewards(1000, [])\n\tg._open_menu(g.Menu.WORKSHOP)\n"),"/board-preview.gd");
 await engine.preloadFile(new TextEncoder().encode("[autoload]\nBoardPreview=\"*/board-preview.gd\"\n[application]\nconfig/use_custom_user_dir=true\nconfig/custom_user_dir_name=\"DiggerWorkshopCrewPlaytest\"\n"),"/override.cfg");
 engine.startGame({
 			'onProgress': function (current, total) {
